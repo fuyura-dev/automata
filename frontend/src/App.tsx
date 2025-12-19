@@ -3,11 +3,26 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [input, setInput] = useState("");
   const [word, setWord] = useState("");
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const handleAnalyze = async () => {};
+  const handleAnalyze = async () => {
+    setLoading(true);
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    setWord(input);
+    setResult({
+      input: input,
+      root: "root-example",
+      affixes: ["affix1", "affix2"],
+      valid: true,
+    });
+
+    setLoading(false);
+  };
 
   return (
     <div className="flex items-center justify-center p-4">
@@ -19,8 +34,8 @@ function App() {
         <input
           className="w-full border rounded px-3 py-2 mb-3 text-black"
           placeholder="Enter a Filipino verb"
-          value={word}
-          onChange={(e) => setWord(e.target.value)}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
         />
 
         <button
@@ -30,19 +45,22 @@ function App() {
           {loading ? "Analyzing..." : "Analyze"}
         </button>
 
-        {(1 || result) && (
+        {result && (
           <div className="mt-4 border-t pt-4 text-black">
             <p>
-              <strong>Input:</strong> {word}Test
+              <strong>Input: </strong> {word}
             </p>
             <p>
-              <strong>Root:</strong>Test
+              <strong>Root: </strong>
+              {result.root}
             </p>
             <p>
-              <strong>Affixes:</strong>Test
+              <strong>Affixes: </strong>
+              {result.affixes.join(", ")}
             </p>
             <p>
-              <strong>Valid:</strong>Test
+              <strong>Valid: </strong>
+              {result.valid ? "Yes" : "No"}
             </p>
           </div>
         )}
