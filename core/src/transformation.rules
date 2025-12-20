@@ -1,0 +1,11 @@
+C "um" V R -> C V R . {"form": ["infinitive", "completed"] } // tumakbo
+
+C "um" V C V R -> C V R . {"form": "incompleted" }           // tumakbo 
+
+C V C V R -> C V R . {"form" : "contemplated"}               // tatakbo
+
+"um" V R -> V R . {"form": ["infinitive", "completed"] }     // uminom 
+
+"um" V V R -> V R . {"form": "incompleted"}                  // umiinom
+
+V V R -> V R . {"form": "contemplated"}                      // iinom
