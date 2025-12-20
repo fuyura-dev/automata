@@ -1,4 +1,4 @@
-const { runPython } = require("./utils/pythonBridge");
+const { try_match, produce_rootword } = require('core')
 
 const express = require("express");
 const path = require("path");
@@ -33,10 +33,12 @@ app.post("/api/analyze", (req, res) => {
     return res.status(400).json({ error: "error input" });
   }
 
+  const [ rule, instances ] = try_match(word);
+
   res.json({
     input: word,
-    root: "root test",
-    affixes: ["affix 1", "affix 2"],
+    root: produce_rootword(rule, instances),
+    affixes: ["affix 1", "affix 2"], // TODO FIX
     valid: true,
   });
 });
