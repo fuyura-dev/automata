@@ -1,0 +1,21 @@
+{
+  "name": "filipino-verb-analyzer",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently \"cd backend && npm start\" \"cd frontend && npm run dev\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fuyura-dev/automata.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fuyura-dev/automata/issues"
+  },
+  "homepage": "https://github.com/fuyura-dev/automata#readme",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
