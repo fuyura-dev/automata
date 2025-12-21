@@ -2,7 +2,7 @@ const { readFileSync } = require( "node:fs");
 const { join } = require('node:path')
 const parse = require("./parser.js");
 
-function parseRules() {
+function parse_rules() {
     const RULES_PATH = join(__dirname, 'transformation.rules')
     const rules = readFileSync(RULES_PATH, 'utf-8')
     return parse(rules)
@@ -21,15 +21,20 @@ function produce_rootword(rule, instances) {
 }
 
 function try_match(input) {
-    const rules = parseRules();
+    const rules = parse_rules();
     let matched_rule, matched_instances;
 
     for (const rule of rules) {
         let instances = new Map();
         let matched = 0;
         let fail = false;
+        let remain = rule.derivation.reduce((sum, comp) => {
+            return sum + comp.min_length();
+        }, 0);
+
         for (const comp of rule.derivation) {
-            const cur_matched = comp.try_match(input, matched, instances)
+            remain -= comp.min_length();
+            const cur_matched = comp.try_match(input, matched, instances, remain);
             if (!cur_matched) {
                 fail = true;
                 break;

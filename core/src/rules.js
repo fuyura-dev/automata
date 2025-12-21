@@ -2,9 +2,12 @@ class Variable {
     constructor(name) {
         this.name = name
     }
-    try_match(inp, ind, instances) {
-        instances.set(this.name, inp.substr(ind));
-        return inp.length - ind;
+    try_match(inp, ind, instances, remain) {
+        instances.set(this.name, inp.substr(ind, inp.length - remain));
+        return inp.length - ind - remain;
+    }
+    min_length() {
+        return 0;
     }
 }
 
@@ -18,6 +21,9 @@ class Affix {
         }
         return 0
     }    
+    min_length() {
+        return this.content.length;
+    }
 }
 
 const VOWELS = 'aeiou'
@@ -33,7 +39,10 @@ class Vowel extends Variable {
         }
         instances.set(this.name, inp[ind])
         return +(VOWELS.indexOf(inp[ind]) != -1)
-    }    
+    }
+    min_length() {
+        return 1;
+    }
 }
 
 class Consonant extends Variable {
@@ -47,6 +56,9 @@ class Consonant extends Variable {
         }
         instances.set(this.name, inp[ind])
         return +(VOWELS.indexOf(inp[ind]) == -1)        
+    }
+    min_length() {
+        return 1;
     }
 }
 
