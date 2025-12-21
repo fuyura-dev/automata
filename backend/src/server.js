@@ -33,7 +33,7 @@ app.post("/api/analyze", (req, res) => {
     return res.status(400).json({ error: "error input" });
   }
 
-  const [ rule, instances ] = try_match(word);
+  const [ rule, instances ] = try_match(word); // TODO MIGHT FAIL
 
   res.json({
     input: word,

@@ -11,12 +11,20 @@ function App() {
   const handleAnalyze = async () => {
     setLoading(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const response = await fetch('/api/analyze', {
+      method: "POST",
+      body: JSON.stringify({"word": input}),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const result = await response.json();
 
     setWord(input);
     setResult({
       input: input,
-      root: "root-example",
+      root: result.root,
       affixes: ["affix1", "affix2"],
       valid: true,
     });
