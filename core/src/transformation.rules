@@ -1,6 +1,6 @@
 C "um" V R -> C V R . {"form": ["infinitive", "completed"] } // tumakbo
 
-C "um" V C V R -> C V R . {"form": "incompleted" }           // tumakbo 
+C "um" V C V R -> C V R . {"form": "incompleted" }           // tumatakbo
 
 C V C V R -> C V R . {"form" : "contemplated"}               // tatakbo
 
@@ -9,3 +9,59 @@ C V C V R -> C V R . {"form" : "contemplated"}               // tatakbo
 "um" V V R -> V R . {"form": "incompleted"}                  // umiinom
 
 V V R -> V R . {"form": "contemplated"}                      // iinom
+
+
+
+"ma" R -> R . {"form": "infinitive"}                         // manood
+
+"na" R -> R . {"form": "completed"}                          // nanood
+
+"na" C V C V R -> C V R . {"form": "incompleted"}            // nanonood
+
+"ma" C V C V R -> C V R . {"form": "contemplated"}           // manonood
+
+"na" V V R -> V R . {"form": "incompleted"}                  // naiinis
+
+"ma" V V R -> V R . {"form": "contemplated"}                 // maiinis
+
+
+
+"mag" R -> R . {"form": "infinitive"}                        // magluto
+
+"nag" R -> R . {"form": "completed"}                         // nagluto
+
+"mag" C V C V R -> C V R . {"form": "contemplated"}          // magluluto
+
+"nag" C V C V R -> C V R . {"form": "incompleted"}           // nagluluto
+
+"mag" V V R -> V R . {"form": "contemplated"}              // magaaral
+
+"nag" V V R -> V R . {"form": "incompleted"}               // nagaaral
+
+"mag-" V V R -> V R . {"form": "contemplated"}              // magaaral
+
+"nag-" V V R -> V R . {"form": "incompleted"}               // nagaaral
+
+
+
+R C "in" -> R C . {"form": "infinitive"}                     // kainin
+
+R V "hin" -> R V . {"form": "infinitive"}                     // basahin
+
+C "in" R -> C R . {"form": "completed"}                       // kinain
+
+"in" R -> R . {"form": "completed"}                       // inalis
+
+C "in" V C V R -> C V R . {"form": "incompleted"}            // kinakain
+
+"in" V V R -> V R . {"form": "incompleted"}                // inaalis
+
+C V C V R "in" -> C V R . {"form": "contemplated"}           // kakainin
+
+V V R "in" -> V R . {"form": "contemplated"}                 // aalisin
+
+C V C V R "hin" -> C V R . {"form": "contemplated"}         // sasabihin
+
+R V C "hin" -> R V C V . {"form": "test"}                   // bilhin
+
+C V C V R "hin" -> C V R . {"form": "dsafsa"}               // bibilhin         // TO DO
