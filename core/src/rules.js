@@ -3,7 +3,7 @@ class Variable {
         this.name = name
     }
     try_match(inp, ind, instances, remain) {
-        instances.set(this.name, inp.substr(ind, inp.length - remain));
+        instances.set(this.name, inp.substr(ind, inp.length - remain - ind));
         return inp.length - ind - remain;
     }
     min_length() {
