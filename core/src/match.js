@@ -8,8 +8,33 @@ function parse_rules() {
     return parse(rules)
 }
 
+const ROOT_WORDS_PATH = join(__dirname, "data", "root_words.json")
+let cached_root_words = null;
+
+function load_root_words() {
+    if (cached_root_words) {
+        return cached_root_words;
+    }
+
+    try{
+        let data = readFileSync(ROOT_WORDS_PATH, "utf8");
+
+        if (data.charCodeAt(0) === 0xfeff) {
+            data = data.slice(1);
+        }
+
+        const parsed = JSON.parse(data);
+        
+        return parsed.words;
+    } catch(err) {
+        console.error("Failed to read file:", err);
+        return [];
+    }
+}
+
 function is_valid_root(input) {
-    return true; // TODO implement
+    const root_words = load_root_words();
+    return root_words.includes(input);
 }
 
 function produce_rootword(rule, instances) {
