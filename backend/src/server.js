@@ -33,28 +33,29 @@ app.post("/api/analyze", (req, res) => {
     return res.status(400).json({ error: "error input" });
   }
 
-  const [ rule, instances ] = try_match(word); // TODO MIGHT FAIL
+  const [ rule, instances ] = try_match(word);
+
+  if (!rule || !instances) {
+    return res.json({
+      input: word,
+      root: null,
+      affixes: [],
+      valid: false,
+      form: null
+    })
+  }
 
   res.json({
     input: word,
     root: produce_rootword(rule, instances),
-    affixes: ["affix 1", "affix 2"], // TODO FIX
+    affixes: rule.derivation.map(comp => comp.content).filter(Boolean),
     valid: true,
+    form: rule.aux_data.form
   });
 });
 
 app.get("/", (req, res) => {
   res.send("Hello Hello");
-});
-
-app.get("/test", async (req, res) => {
-  try {
-    const result = await runPython("external/test/test.py", ["adfasf"]);
-
-    res.json({ output: result });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
 });
 
 const PORT = 3000;
