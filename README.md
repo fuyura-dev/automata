@@ -58,3 +58,40 @@ npm run dev
 - **Frontend** - The Vite dev server runs on `http://localhost:5173`
 
 Make sure both servers are running for the application to work properly.
+
+## VSCode Extension
+
+This repository includes a VSCode extension for syntax highlighting of `transformation.rules` files.
+
+### Installing the Extension
+
+1. **From VSIX (Recommended)**
+
+   The extension has been packaged and is available in the `.vscode-extension` directory.
+
+   To install:
+   - Open VSCode
+   - Go to Extensions view (Ctrl+Shift+X / Cmd+Shift+X)
+   - Click on the "..." menu at the top
+   - Select "Install from VSIX..."
+   - Navigate to `.vscode-extension/transformation-rules-syntax-0.0.1.vsix`
+   - Select the file to install
+
+2. **From Source**
+
+   Copy the `.vscode-extension` directory to your VSCode extensions folder:
+   - **Windows**: `%USERPROFILE%\.vscode\extensions\transformation-rules-syntax`
+   - **macOS/Linux**: `~/.vscode/extensions/transformation-rules-syntax`
+
+   Then restart VSCode.
+
+### Rebuilding the Extension
+
+If you make changes to the extension:
+
+```sh
+cd .vscode-extension
+npx @vscode/vsce package
+```
+
+This will generate a new `.vsix` file that can be installed in VSCode.
