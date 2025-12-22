@@ -25,7 +25,8 @@ function load_root_words() {
 
         const parsed = JSON.parse(data);
         
-        return parsed.words;
+        cached_root_words = parsed.words;
+        return cached_root_words;
     } catch(err) {
         console.error("Failed to read file:", err);
         return [];
