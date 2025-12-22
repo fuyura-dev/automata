@@ -46,15 +46,23 @@ V V R -> V R . {"form": "contemplated"}                      // iinom
 
 R C "in" -> R C . {"form": "infinitive"}                     // kainin
 
+R V "in" -> R V . {"form": "infinitive"}                     // lutuin
+
 R V "hin" -> R V . {"form": "infinitive"}                     // basahin
+
+R V C "hin" -> R V C V . {"form": "infinitive"}                   // bilhin
 
 C "in" R -> C R . {"form": "completed"}                       // kinain
 
 "in" R -> R . {"form": "completed"}                       // inalis
 
+"ni" R -> R . {"form": "completed"}                         // niluto
+
 C "in" V C V R -> C V R . {"form": "incompleted"}            // kinakain
 
 "in" V V R -> V R . {"form": "incompleted"}                // inaalis
+
+"ni" C V C V R -> C V R . {"form": "incompleted"}             // niluluto
 
 C V C V R "in" -> C V R . {"form": "contemplated"}           // kakainin
 
@@ -62,6 +70,107 @@ V V R "in" -> V R . {"form": "contemplated"}                 // aalisin
 
 C V C V R "hin" -> C V R . {"form": "contemplated"}         // sasabihin
 
-R V C "hin" -> R V C V . {"form": "test"}                   // bilhin
 
-C V C V R "hin" -> C V R . {"form": "dsafsa"}               // bibilhin         // TO DO
+
+"i" C R -> C R . {"form": "infinitive"}                         // ibigay
+
+"i" C "in" R -> C R . {"form": "completed"}                // ibinigay
+
+"i" C "in" V C V R -> C V R . {"form": "incompleted"}       // ibinibigay
+
+"i" C V C V R -> C V R . {"form": "contemplated"}           // ibibigay
+
+// TO DO: example for: redup of first CV if the word starts with a vowel and other cases
+
+
+
+R "an" -> R . {"form": "infinitive"}                        // hugasan
+
+R "han" -> R . {"form": "infinitive"}                        // puntahan
+
+C "in" R "an" -> C R . {"form": "completed"}               // hinugasan
+
+C "in" R "han" -> C R . {"form": "completed"}               // pinuntahan
+
+C "in" V C V R "an" -> C V R . {"form": "incompleted"}          // hinuhugasan
+
+C "in" V C V R "han" -> C V R . {"form": "incompleted"}          // pinupuntahan
+
+C V C V R "an" -> C V R . {"form": "contemplated"}              // huhugasan
+
+C V C V R "han" -> C V R . {"form": "contemplated"}              // huhugasan
+
+// TO DO: example for: redup of first CV if the word starts with a vowel and other cases
+
+
+
+"pag" R "an" -> R . {"form": "infinitive"}                      // pagasayawan
+
+ "pinag" R "an" -> R . {"form": "completed"}                    // pinagsayawan
+
+ "pinag" C V C V R "an" -> C V R . {"form": "incompleted"}          // pinagsasayawan
+
+ "pag" C V C V R "an" -> C V R . {"form": "contemplated"}           // pagsasayawan
+
+ // TO DO: example for: redup of first CV if the word starts with a vowel and other cases
+
+
+
+"ipag" R -> R . {"form": "infinitive"}                  // ipagluto
+
+"ipinag" R -> R . {"form": "completed"}            // ipinagluto
+
+"ipinag" C V C V R . {"form": "incompleted"}            // ipinagluluto
+
+"ipag" C V C V R . {"form": "contemplated"}             // ipagluluto
+
+// Skipped: Word formation rules for i- verbs
+// rules already exists
+
+
+
+
+"ipam" R -> R . {"form": "infinitive"}             // ipambili
+
+"ipan" R -> R . {"form": "infinitive"}             // ipansulat
+
+"ipang" R -> R . {"form": "infinitive"}             // ipangguhit
+
+"ipinam" R -> R . {"form": "completed"}            // ipinambili
+
+"ipinan" R -> R . {"form": "completed"}            // ipinanlaba
+
+"ipinang" R -> R . {"form": "completed"}            // ipinangguhit
+
+"ipinam" C V C V R -> C V R . {"form": "incompleted"}     // ipinambibili
+
+"ipinan" C V C V R -> C V R . {"form": "incompleted"}     // ipinanlalaba
+
+"ipinang" C V C V R -> C V R . {"form": "incompleted"}     // ipinangguguhit
+
+"ipam" C V C V R -> C V R . {"form": "contemplated"}       // ipambibili
+
+"ipan" C V C V R -> C V R . {"form": "contemplated"}       // ipanlalaba
+
+"ipang" C V C V R -> C V R . {"form": "contemplated"}       // ipangguguhit
+
+"ipang-" V R -> V R . {"form": "infinitive"}            // ipang-alis
+
+"ipinang-" V R -> V R . {"form": "completed"}           // ipinang-alis
+
+"ipinang-" V V R -> V R . {"form": "incompleted"}       // ipinang-aalis
+
+"ipang-" V V R -> V R . {"form": "contemplated"}        // ipang-aalis
+
+
+
+// Skipped: Word formation rules for EF ma- verbs
+// rules already exists
+
+
+
+// Skipped: Word formation rules for Deadjectival EF um- verbs
+// rules already exists
+
+
+
