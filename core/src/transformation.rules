@@ -1,3 +1,5 @@
+// ******************** -Um- verbs
+
 C "um" V R -> C V R . {"form": ["infinitive", "completed"] } // tumakbo
 
 C "um" V C V R -> C V R . {"form": "incompleted" }           // tumatakbo
@@ -12,6 +14,8 @@ V V R -> V R . {"form": "contemplated"}                      // iinom
 
 
 
+// ******************** Ma- verbs
+
 "ma" R -> R . {"form": "infinitive"}                         // manood
 
 "na" R -> R . {"form": "completed"}                          // nanood
@@ -25,6 +29,8 @@ V V R -> V R . {"form": "contemplated"}                      // iinom
 "ma" V V R -> V R . {"form": "contemplated"}                 // maiinis
 
 
+
+// ******************** Mag- verbs
 
 "mag" R -> R . {"form": "infinitive"}                        // magluto
 
@@ -43,6 +49,8 @@ V V R -> V R . {"form": "contemplated"}                      // iinom
 "nag-" V V R -> V R . {"form": "incompleted"}               // nagaaral
 
 
+
+// ******************** -In verbs
 
 R C "in" -> R C . {"form": "infinitive"}                     // kainin
 
@@ -72,6 +80,8 @@ C V C V R "hin" -> C V R . {"form": "contemplated"}         // sasabihin
 
 
 
+// ******************** I- verbs
+
 "i" C R -> C R . {"form": "infinitive"}                         // ibigay
 
 "i" C "in" R -> C R . {"form": "completed"}                // ibinigay
@@ -83,6 +93,8 @@ C V C V R "hin" -> C V R . {"form": "contemplated"}         // sasabihin
 // TO DO: example for: redup of first CV if the word starts with a vowel and other cases
 
 
+
+// ******************** -An verbs | Direction-focus an- verbs
 
 R "an" -> R . {"form": "infinitive"}                        // hugasan
 
@@ -104,6 +116,8 @@ C V C V R "han" -> C V R . {"form": "contemplated"}              // huhugasan
 
 
 
+// ******************** Location-focus pag – an verbs
+
 "pag" R "an" -> R . {"form": "infinitive"}                      // pagasayawan
 
  "pinag" R "an" -> R . {"form": "completed"}                    // pinagsayawan
@@ -115,6 +129,8 @@ C V C V R "han" -> C V R . {"form": "contemplated"}              // huhugasan
  // TO DO: example for: redup of first CV if the word starts with a vowel and other cases
 
 
+
+// ******************** BF ipag- and i- verbs
 
 "ipag" R -> R . {"form": "infinitive"}                  // ipagluto
 
@@ -129,6 +145,8 @@ C V C V R "han" -> C V R . {"form": "contemplated"}              // huhugasan
 
 
 
+
+// ******************** IF ipang- verbs
 
 "ipam" R -> R . {"form": "infinitive"}             // ipambili
 
