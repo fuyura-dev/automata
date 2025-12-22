@@ -41,7 +41,7 @@ function is_valid_root(input) {
 function produce_rootword(rule, instances) {
     let result = "";
     for (const comp of rule.root_production) {
-        result += instances.get(comp.name);
+        result += instances.get(comp.name)[0];
     }
     return result;
 }

@@ -3,7 +3,7 @@ class Variable {
         this.name = name
     }
     try_match(inp, ind, instances, remain) {
-        instances.set(this.name, inp.substr(ind, inp.length - remain - ind));
+        instances.set(this.name, [inp.substr(ind, inp.length - remain - ind), ind]);
         return inp.length - ind - remain;
     }
     min_length() {
@@ -17,6 +17,7 @@ class Affix {
     }
     try_match(inp, ind, instances) {
         if (inp.substring(ind, ind + this.content.length) == this.content) {
+            instances.set(this.content, ind);
             return this.content.length
         }
         return 0
@@ -35,9 +36,10 @@ class Vowel extends Variable {
     try_match(inp, ind, instances) {
         const instance = instances.get(this.name)
         if (instance) {
-            return +(instance == inp[ind])
+            instance[1] = ind;
+            return +(instance[0] == inp[ind])
         }
-        instances.set(this.name, inp[ind])
+        instances.set(this.name, [inp[ind], ind])
         return +(VOWELS.indexOf(inp[ind]) != -1)
     }
     min_length() {
@@ -52,9 +54,10 @@ class Consonant extends Variable {
     try_match(inp, ind, instances) {
         const instance = instances.get(this.name)
         if (instance) {
-            return +(instance == inp[ind])
+            instance[1] = ind;
+            return +(instance[0] == inp[ind])
         }
-        instances.set(this.name, inp[ind])
+        instances.set(this.name, [inp[ind], ind])
         return +(VOWELS.indexOf(inp[ind]) == -1)        
     }
     min_length() {
