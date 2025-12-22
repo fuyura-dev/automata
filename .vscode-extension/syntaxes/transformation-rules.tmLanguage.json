@@ -1,0 +1,134 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Transformation Rules",
+  "scopeName": "source.rules",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#rule"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.rules",
+          "match": "//.*$"
+        }
+      ]
+    },
+    "rule": {
+      "patterns": [
+        {
+          "include": "#variables"
+        },
+        {
+          "include": "#affixes"
+        },
+        {
+          "include": "#arrow"
+        },
+        {
+          "include": "#separator"
+        },
+        {
+          "include": "#metadata"
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "name": "keyword.control.rules",
+          "match": "\\b[CVR]\\b"
+        }
+      ]
+    },
+    "affixes": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.rules",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.rules",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "arrow": {
+      "patterns": [
+        {
+          "name": "keyword.operator.arrow.rules",
+          "match": "->"
+        }
+      ]
+    },
+    "separator": {
+      "patterns": [
+        {
+          "name": "punctuation.separator.rules",
+          "match": "\\."
+        }
+      ]
+    },
+    "metadata": {
+      "patterns": [
+        {
+          "name": "meta.embedded.block.json",
+          "begin": "\\{",
+          "end": "\\}",
+          "patterns": [
+            {
+              "include": "#json-content"
+            }
+          ]
+        }
+      ]
+    },
+    "json-content": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.json",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.json",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "constant.language.json",
+          "match": "\\b(true|false|null)\\b"
+        },
+        {
+          "name": "constant.numeric.json",
+          "match": "-?\\d+\\.?\\d*([eE][+-]?\\d+)?"
+        },
+        {
+          "name": "punctuation.separator.dictionary.key-value.json",
+          "match": ":"
+        },
+        {
+          "name": "punctuation.separator.dictionary.pair.json",
+          "match": ","
+        },
+        {
+          "name": "punctuation.definition.array.begin.json",
+          "match": "\\["
+        },
+        {
+          "name": "punctuation.definition.array.end.json",
+          "match": "\\]"
+        }
+      ]
+    }
+  }
+}
