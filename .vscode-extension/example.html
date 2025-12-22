@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformation Rules Syntax Highlighting Example</title>
+    <style>
+        body {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #4ec9b0;
+            font-size: 24px;
+        }
+        .code-block {
+            background-color: #252526;
+            border: 1px solid #3c3c3c;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        .variable {
+            color: #569cd6;
+            font-weight: bold;
+        }
+        .affix {
+            color: #ce9178;
+        }
+        .arrow {
+            color: #c586c0;
+            font-weight: bold;
+        }
+        .separator {
+            color: #d4d4d4;
+        }
+        .json {
+            color: #9cdcfe;
+        }
+        .json-key {
+            color: #9cdcfe;
+        }
+        .json-value {
+            color: #ce9178;
+        }
+        .legend {
+            background-color: #252526;
+            border: 1px solid #3c3c3c;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .legend-item {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Transformation Rules Syntax Highlighting Example</h1>
+    
+    <div class="legend">
+        <h2 style="color: #4ec9b0; font-size: 18px;">Syntax Elements:</h2>
+        <div class="legend-item"><span class="comment">// Comments</span> - Green, italic</div>
+        <div class="legend-item"><span class="variable">C V R</span> - Blue, bold (Variables: Consonant, Vowel, Root)</div>
+        <div class="legend-item"><span class="affix">"affix"</span> - Orange (Quoted affixes)</div>
+        <div class="legend-item"><span class="arrow">-></span> - Purple, bold (Arrow operator)</div>
+        <div class="legend-item"><span class="separator">.</span> - White (Separator)</div>
+        <div class="legend-item"><span class="json">{"key": "value"}</span> - Light blue (JSON metadata)</div>
+    </div>
+
+    <div class="code-block">
+<span class="comment">// ******************** -Um- verbs</span>
+
+<span class="variable">C</span> <span class="affix">"um"</span> <span class="variable">V</span> <span class="variable">R</span> <span class="arrow">-></span> <span class="variable">C</span> <span class="variable">V</span> <span class="variable">R</span> <span class="separator">.</span> <span class="json">{"form": ["infinitive", "completed"] }</span> <span class="comment">// tumakbo</span>
+
+<span class="variable">C</span> <span class="affix">"um"</span> <span class="variable">V</span> <span class="variable">C</span> <span class="variable">V</span> <span class="variable">R</span> <span class="arrow">-></span> <span class="variable">C</span> <span class="variable">V</span> <span class="variable">R</span> <span class="separator">.</span> <span class="json">{"form": "incompleted" }</span>           <span class="comment">// tumatakbo</span>
+
+<span class="variable">C</span> <span class="variable">V</span> <span class="variable">C</span> <span class="variable">V</span> <span class="variable">R</span> <span class="arrow">-></span> <span class="variable">C</span> <span class="variable">V</span> <span class="variable">R</span> <span class="separator">.</span> <span class="json">{"form" : "contemplated"}</span>               <span class="comment">// tatakbo</span>
+
+<span class="affix">"um"</span> <span class="variable">V</span> <span class="variable">R</span> <span class="arrow">-></span> <span class="variable">V</span> <span class="variable">R</span> <span class="separator">.</span> <span class="json">{"form": ["infinitive", "completed"] }</span>     <span class="comment">// uminom</span> 
+
+
+<span class="comment">// ******************** Ma- verbs</span>
+
+<span class="affix">"ma"</span> <span class="variable">R</span> <span class="arrow">-></span> <span class="variable">R</span> <span class="separator">.</span> <span class="json">{"form": "infinitive"}</span>                         <span class="comment">// manood</span>
+
+<span class="affix">"na"</span> <span class="variable">R</span> <span class="arrow">-></span> <span class="variable">R</span> <span class="separator">.</span> <span class="json">{"form": "completed"}</span>                          <span class="comment">// nanood</span>
+
+
+<span class="comment">// ******************** -In verbs</span>
+
+<span class="variable">R</span> <span class="variable">C</span> <span class="affix">"in"</span> <span class="arrow">-></span> <span class="variable">R</span> <span class="variable">C</span> <span class="separator">.</span> <span class="json">{"form": "infinitive"}</span>                     <span class="comment">// kainin</span>
+
+<span class="variable">C</span> <span class="affix">"in"</span> <span class="variable">R</span> <span class="arrow">-></span> <span class="variable">C</span> <span class="variable">R</span> <span class="separator">.</span> <span class="json">{"form": "completed"}</span>                       <span class="comment">// kinain</span>
+    </div>
+
+    <h2 style="color: #4ec9b0; font-size: 18px;">How the Extension Works</h2>
+    <p>
+        The VSCode extension provides syntax highlighting for <code style="color: #ce9178;">.rules</code> files by:
+    </p>
+    <ul>
+        <li>Recognizing variables (<code class="variable">C</code>, <code class="variable">V</code>, <code class="variable">R</code>) and highlighting them</li>
+        <li>Highlighting quoted affixes like <code class="affix">"um"</code>, <code class="affix">"mag"</code>, etc.</li>
+        <li>Highlighting the arrow operator <code class="arrow">-></code></li>
+        <li>Providing JSON syntax highlighting for metadata sections</li>
+        <li>Highlighting line comments starting with <code class="comment">//</code></li>
+    </ul>
+
+</body>
+</html>

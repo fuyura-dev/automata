@@ -1,0 +1,39 @@
+{
+  "name": "transformation-rules-syntax",
+  "displayName": "Transformation Rules Syntax Highlighting",
+  "description": "Syntax highlighting for transformation.rules files",
+  "version": "0.0.1",
+  "publisher": "fuyura-dev",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "transformation-rules",
+        "aliases": [
+          "Transformation Rules",
+          "rules"
+        ],
+        "extensions": [
+          ".rules"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "transformation-rules",
+        "scopeName": "source.rules",
+        "path": "./syntaxes/transformation-rules.tmLanguage.json"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fuyura-dev/automata.git"
+  }
+}
