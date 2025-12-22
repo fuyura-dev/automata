@@ -7,7 +7,7 @@ const fs = require("fs");
 const app = express();
 app.use(express.json());
 
-const rootWordsPath = path.join(__dirname, "data", "root_words.json");
+const rootWordsPath = path.join(__dirname, "..", "..", "core", "src", "data", "root_words.json");
 
 app.get("/api/roots", (req, res) => {
   try {
