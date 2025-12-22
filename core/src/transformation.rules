@@ -192,3 +192,22 @@ C V C V R "han" -> C V R . {"form": "contemplated"}              // huhugasan
 
 
 
+// Skipped: Word formation rules for Deadjectival EF -in verbs
+// rules already exists
+
+
+
+// ******************** RF ika- verbs
+
+"ika" R -> R . {"form": "infinitive"}           // ikatuwa
+
+"ikina" R -> R . {"form": "completed"}                   // ikinatuwa
+
+"ikina" C V C V R -> C V R . {"form": "incompleted"}         // ikinatutuwa
+
+"ika" C V C V R -> C V R . {"form": "contemplated"}         // ikatutuwa
+
+"ikina" V V R -> V R . {"form": "incompleted"}         // ikinaiinis
+
+"ika" V V R -> V R . {"form": "contemplated"}         // ikatutuwa
+
