@@ -110,7 +110,7 @@
         },
         {
           "name": "constant.numeric.json",
-          "match": "-?\\d+\\.?\\d*([eE][+-]?\\d+)?"
+          "match": "-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:[eE][+-]?\\d+)?"
         },
         {
           "name": "punctuation.separator.dictionary.key-value.json",
