@@ -33,22 +33,20 @@ app.post("/api/analyze", (req, res) => {
     return res.status(400).json({ error: "error input" });
   }
 
-  const [ rule, instances ] = try_match(word);
+  const result = try_match(word);
 
-  if (!rule || !instances) {
+  if (!result) {
     return res.json({
-      input: word,
-      root: null,
-      affixes: [],
-      valid: false,
-      form: null
-    })
+      components: [{ str: word, kind: 'root' }],
+      valid: false
+    });
   }
 
+  const { rule, components, root } = result;
+
   res.json({
-    input: word,
-    root: produce_rootword(rule, instances),
-    affixes: rule.derivation.map(comp => comp.content).filter(Boolean),
+    root,
+    components,
     valid: true,
     form: rule.aux_data.form
   });
