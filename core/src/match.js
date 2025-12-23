@@ -52,6 +52,7 @@ function try_match(input) {
 
     for (const rule of rules) {
         let instances = new Map();
+        instances.set("affixes", [])
         let matched = 0;
         let fail = false;
         let remain = rule.derivation.reduce((sum, comp) => {
@@ -78,12 +79,78 @@ function try_match(input) {
         }
     }
 
-    return [
-        matched_rule, matched_instances
-    ]
+    if (!matched_rule) {
+        return null;
+    }
+
+    const affixes = matched_instances.get('affixes');
+    let variables = Array.from(matched_instances.entries()).
+                            filter(([key, _]) => key != 'affixes').
+                            map(([_, val]) => val.slice()).
+                            sort((a, b) => a[1] - b[1]);
+
+    variables = (() => {                              // merge consecutive variables
+        const result = [variables[0]];
+        for (let i = 1; i < variables.length; i++) {
+            const last = result.at(-1);
+            if (last[1] + last[0].length == variables[i][1]) {
+                last[0] += variables[i][0];
+            } else {
+                result.push(variables[i]);   
+            }
+        }
+        return result;
+    })();
+
+    let used = new Array(input.length);
+    used.fill(0, 0, input.length)
+    for (const [str, ind] of affixes) {
+        used.fill(1, ind, ind + str.length);
+    }
+    for (const [str, ind] of variables) {
+        used.fill(1, ind, ind + str.length);
+    }
+
+    const redups = [];
+    for (let i = 0; i < input.length; i++) {
+        if (!used[i]) {
+            let redup = "";
+            for (let j = i; j < input.length && !used[j]; j++) {
+                used[j] = 1;
+                redup += input[j];
+            }
+            redups.push([redup, i]);
+        }
+    }
+
+    const objectify = (kind) => {
+        return ([str, ind]) => {
+            return {
+                str, ind, kind
+            }
+        }
+    };
+
+    const components = affixes.
+                        map(objectify('affix')).
+                        concat( 
+                            variables.map(objectify('root'))
+                        ).
+                        concat(
+                            redups.map(objectify('redup'))
+                        ).
+                        sort((a, b) => a.ind - b.ind).
+                        map(({ str, kind }) => {
+                            return { str, kind }
+                        })
+    return {
+        rule: matched_rule,
+        root: produce_rootword(matched_rule, matched_instances),
+        components: components
+    }
+    
 }
 
 module.exports = {
-    try_match,
-    produce_rootword
+    try_match
 }

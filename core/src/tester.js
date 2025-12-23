@@ -1,5 +1,5 @@
 const readline = require('readline/promises')
-const { try_match, produce_rootword } = require('./match.js');
+const { try_match } = require('./match.js');
 const { Variable } = require('./rules.js');
 
 const rl = readline.createInterface({
@@ -29,27 +29,26 @@ function stringify(rule) {
 async function run() {
     while (true) {
         const input = await rl.question('Enter verb: ')
-        let rule, instances;
+        let result
 
         try {
-            [ rule, instances ] = try_match(input);
+            result = try_match(input);
         } catch (e) {
             console.log(e);
             continue;
         }
 
-        if (!rule) {
+        if (!result) {
             console.log('Invalid verb');
             continue;
         }
 
+        const { rule, root, components } = result;
+
         console.log(stringify(rule));
-        console.log('root word: ', produce_rootword(rule, instances));
+        console.log('root word: ', root);
         console.log('aux data: ', rule.aux_data);
-        console.log('variables: ');
-        for (const [ name, value] of instances) {
-            console.log(name, '=', value);
-        }
+        console.log(components)
         console.log();
     }
 }
