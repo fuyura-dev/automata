@@ -1,11 +1,19 @@
-const { readFileSync } = require( "node:fs");
+const { readFileSync, lstatSync } = require( "node:fs");
 const { join } = require('node:path')
 const parse = require("./parser.js");
 
+let cached_rules = null;
+let last_modify_rules = 0;
+
 function parse_rules() {
     const RULES_PATH = join(__dirname, 'transformation.rules')
-    const rules = readFileSync(RULES_PATH, 'utf-8')
-    return parse(rules)
+    const { mtimeMs } = lstatSync(RULES_PATH)
+    if (mtimeMs != last_modify_rules) {
+        last_modify_rules = mtimeMs;
+        const rules = readFileSync(RULES_PATH, 'utf-8');
+        cached_rules = parse(rules);
+    }
+    return cached_rules;
 }
 
 const ROOT_WORDS_PATH = join(__dirname, "data", "root_words.json")
