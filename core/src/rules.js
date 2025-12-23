@@ -17,7 +17,7 @@ class Affix {
     }
     try_match(inp, ind, instances) {
         if (inp.substring(ind, ind + this.content.length) == this.content) {
-            instances.set(this.content, ind);
+            instances.get("affixes").push([this.content, ind]);
             return this.content.length
         }
         return 0
