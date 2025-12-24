@@ -24,16 +24,19 @@ function App() {
 
     const result = await response.json();
 
-    setComponents(result.components.map(({str, kind}, i) => {
-      if (kind == 'redup') {
-        return <span className="blue" key={i}> {str} </span>
-      } else if (kind == 'root') {
-        return <span className={result.valid ? "green" : "red"} key={i}> {str} </span>
-      } else {
-        return <span className="affix" key={i}> {str} </span>
-      }
-    }))
-
+    if (result.components) {
+      setComponents(result.components.map(({str, kind}, i) => {
+        if (kind == 'redup') {
+          return <span className="blue" key={i}> {str} </span>
+        } else if (kind == 'root') {
+          return <span className={result.valid ? "green" : "red"} key={i}> {str} </span>
+        } else {
+          return <span className="affix" key={i}> {str} </span>
+        }
+      }))
+    } else {
+      setComponents([])
+    }
     setLoading(false);
   }
 
@@ -55,7 +58,7 @@ function App() {
 
   return (
     <div className="input-div">
-      {loading ? <span class="yellow">{input}</span> : components}
+      {loading ? <span className="yellow">{input}</span> : components}
     </div>
   );
 }
