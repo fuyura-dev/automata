@@ -13,10 +13,18 @@ body {
   font-style: normal;
 }
 
+.input-div {
+  display: flex; 
+  gap: 10px;
+  justify-content: center;
+}
+
 span {
   color: white;
   font-size: 3rem;
   text-align: center;
+  justify-content: center;
+  display: inline-block;
 }
 
 .red {
@@ -34,6 +42,8 @@ span {
 .blue {
   color: #05dbe9;
 }
+
 .affix {
-  text-decoration: underline;
+  padding-bottom: 5px;
+  border-bottom: 5px white solid;
 }
