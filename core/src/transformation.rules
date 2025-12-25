@@ -1,3 +1,5 @@
+R -> R . {"form": "root"}
+
 // ******************** -Um- verbs
 
 C "um" V R -> C V R . {"form": ["infinitive", "completed"] } // tumakbo
