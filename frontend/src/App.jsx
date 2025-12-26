@@ -86,6 +86,14 @@ function App() {
       handleInputChange(currentInput.slice(0, currentInput.length - 1));
       return;
     }
+    if (key == "Delete") {
+      handleInputChange("");
+      return;
+    }
+    if (key == "Enter") {
+      analyeWord(currentInput);
+      return;
+    }
     if (key.length != 1) {
       return;
     }
