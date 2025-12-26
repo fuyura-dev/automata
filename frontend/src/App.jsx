@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import "./App.css";
 
@@ -6,6 +6,7 @@ function App() {
   const [input, setInput] = useState("");
   const [components, setComponents] = useState([])
   const [loading, setLoading] = useState(false);
+  const debounceTimerRef = useRef(null);
 
   const fetchApi = async (word) => {
     const API_URL = import.meta.env.VITE_API_URL || '';
@@ -18,11 +19,9 @@ function App() {
     })
   }
 
-  const handleInputChange = async (newInput) => {
-    setInput(newInput);
-    setLoading(true);
-    const response = await fetchApi(newInput);
-
+  const analyeWord = async (word) => {
+    const response = await fetchApi(word);
+    
     const result = await response.json();
 
     if (result.components) {
@@ -41,11 +40,35 @@ function App() {
     setLoading(false);
   }
 
+  const handleInputChange = (newInput) => {
+    console.log("Input changed:", newInput);
+    setInput(newInput);
+    setLoading(true);
+
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+    }
+    debounceTimerRef.current = setTimeout(() => {
+      console.log("Analyzing:", newInput);
+      
+      analyeWord(newInput);
+    }, 900)
+
+  }
+  const inputRef = useRef("");
+  useEffect(() => {
+    inputRef.current = input;
+  }, [input]);
+
   const onKeyDown = (e) => {
     const key = e.key;
-    console.log(key)
+    console.log("Key pressed:", key);
+
+    const currentInput = inputRef.current;
+    
     if (key == "Backspace") {
-      handleInputChange(input.slice(0, input.length - 1));
+      handleInputChange(currentInput.slice(0, currentInput.length - 1));
+      return;
     }
     if (key.length != 1) {
       return;
@@ -54,13 +77,19 @@ function App() {
       return;
     }
 
-    handleInputChange(input + key.toLowerCase())
+    handleInputChange(currentInput + key.toLowerCase())
   }
 
   useEffect(() => {
     window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown)
-  });
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+    }
+  }, []);
 
   return (
     <div className="input-div">
