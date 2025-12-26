@@ -92,6 +92,10 @@ C V C V R "hin" -> C V R . {"form": "contemplated"}         // sasabihin
 
 "i" C V C V R -> C V R . {"form": "contemplated"}           // ibibigay
 
+"ini" R -> R . {"form": "completed"}                        // iniluto inilabas
+
+"ini" C V C V R -> C V R . {"form": "incompleted"}                // inilalabas
+
 // TO DO: example for: redup of first CV if the word starts with a vowel and other cases
 
 
