@@ -1,70 +1,73 @@
 class Variable {
-    constructor(name) {
-        this.name = name
-    }
-    try_match(inp, ind, instances, remain) {
-        instances.set(this.name, [inp.substr(ind, inp.length - remain - ind), ind]);
-        return inp.length - ind - remain;
-    }
-    min_length() {
-        return 0;
-    }
+  constructor(name) {
+    this.name = name;
+  }
+  try_match(inp, ind, instances, remain) {
+    instances.set(this.name, [inp.substr(ind, inp.length - remain - ind), ind]);
+    return inp.length - ind - remain;
+  }
+  min_length() {
+    return 0;
+  }
 }
 
 class Affix {
-    constructor(content) {
-        this.content = content
+  constructor(content) {
+    this.content = content;
+  }
+  try_match(inp, ind, instances) {
+    if (inp.substring(ind, ind + this.content.length) == this.content) {
+      instances.get("affixes").push([this.content, ind]);
+      return this.content.length;
     }
-    try_match(inp, ind, instances) {
-        if (inp.substring(ind, ind + this.content.length) == this.content) {
-            instances.get("affixes").push([this.content, ind]);
-            return this.content.length
-        }
-        return 0
-    }    
-    min_length() {
-        return this.content.length;
-    }
+    return 0;
+  }
+  min_length() {
+    return this.content.length;
+  }
 }
 
-const VOWELS = 'aeiou'
+const VOWELS = "aeiou";
 
 class Vowel extends Variable {
-    constructor() {
-        super('V')
+  constructor() {
+    super("V");
+  }
+  try_match(inp, ind, instances) {
+    const instance = instances.get(this.name);
+    if (instance) {
+      instance[1] = ind;
+      return +(instance[0] == inp[ind]);
     }
-    try_match(inp, ind, instances) {
-        const instance = instances.get(this.name)
-        if (instance) {
-            instance[1] = ind;
-            return +(instance[0] == inp[ind])
-        }
-        instances.set(this.name, [inp[ind], ind])
-        return +(VOWELS.indexOf(inp[ind]) != -1)
-    }
-    min_length() {
-        return 1;
-    }
+    instances.set(this.name, [inp[ind], ind]);
+    return +(VOWELS.indexOf(inp[ind]) != -1);
+  }
+  min_length() {
+    return 1;
+  }
 }
 
 class Consonant extends Variable {
-    constructor() {
-        super('C')
+  constructor() {
+    super("C");
+  }
+  try_match(inp, ind, instances) {
+    const instance = instances.get(this.name);
+    if (instance) {
+      instance[1] = ind;
+      return +(instance[0] == inp[ind]);
     }
-    try_match(inp, ind, instances) {
-        const instance = instances.get(this.name)
-        if (instance) {
-            instance[1] = ind;
-            return +(instance[0] == inp[ind])
-        }
-        instances.set(this.name, [inp[ind], ind])
-        return +(VOWELS.indexOf(inp[ind]) == -1)        
-    }
-    min_length() {
-        return 1;
-    }
+    instances.set(this.name, [inp[ind], ind]);
+    return +(VOWELS.indexOf(inp[ind]) == -1);
+  }
+  min_length() {
+    return 1;
+  }
 }
 
 module.exports = {
-    Variable, Consonant, Affix, Vowel
-}
+  Variable,
+  Consonant,
+  Affix,
+  Vowel,
+};
