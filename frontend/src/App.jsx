@@ -8,7 +8,8 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const fetchApi = async (word) => {
-    return await fetch('/api/analyze', {
+    const API_URL = import.meta.env.VITE_API_URL || '';
+    return await fetch(`${API_URL}/api/analyze`, {
       method: "POST",
       body: JSON.stringify({"word": word}),
       headers: {
