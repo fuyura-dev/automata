@@ -43,12 +43,17 @@ function App() {
   const onKeyDown = (e) => {
     const key = e.key;
     console.log(key)
-    if (key.length == 1) {
-      handleInputChange(input + key);           // TODO if not a-z A-Z - , ignore if.  A_Z lowercase it
-    }
     if (key == "Backspace") {
       handleInputChange(input.slice(0, input.length - 1));
     }
+    if (key.length != 1) {
+      return;
+    }
+    if (!/^[a-zA-Z]$/.test(key)) {
+      return;
+    }
+
+    handleInputChange(input + key.toLowerCase())
   }
 
   useEffect(() => {
