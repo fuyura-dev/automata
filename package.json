@@ -1,6 +1,11 @@
 {
   "name": "filipino-verb-analyzer",
   "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "core"
+  ],
   "scripts": {
     "dev": "concurrently \"cd backend && npm start\" \"cd frontend && npm run dev\""
   },
