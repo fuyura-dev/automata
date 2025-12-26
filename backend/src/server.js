@@ -1,4 +1,5 @@
 const { try_match, produce_rootword } = require('core')
+const { validateInput } = require('./utils/validate')
 
 const express = require("express");
 const path = require("path");
@@ -29,11 +30,17 @@ app.get("/api/roots", (req, res) => {
 app.post("/api/analyze", (req, res) => {
   const { word } = req.body;
 
-  if (!word) {
-    return res.status(400).json({ error: "error input" });
+  const validation = validateInput(word);
+  if (!validation.ok) {
+    return res.status(400).json({
+      valid: false,
+      error: validation.error
+    })
   }
 
-  const result = try_match(word);
+  const input = validation.value;
+
+  const result = try_match(input);
 
   if (!result) {
     return res.json({
