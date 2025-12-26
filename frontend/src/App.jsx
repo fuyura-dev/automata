@@ -4,41 +4,58 @@ import "./App.css";
 
 function App() {
   const [input, setInput] = useState("");
-  const [components, setComponents] = useState([])
+  const [components, setComponents] = useState([]);
   const [loading, setLoading] = useState(false);
   const debounceTimerRef = useRef(null);
 
   const fetchApi = async (word) => {
-    const API_URL = import.meta.env.VITE_API_URL || '';
+    const API_URL = import.meta.env.VITE_API_URL || "";
     return await fetch(`${API_URL}/api/analyze`, {
       method: "POST",
-      body: JSON.stringify({"word": word}),
+      body: JSON.stringify({ word: word }),
       headers: {
-        "Content-Type": "application/json"
-      }
-    })
-  }
+        "Content-Type": "application/json",
+      },
+    });
+  };
 
   const analyeWord = async (word) => {
     const response = await fetchApi(word);
-    
+
     const result = await response.json();
 
     if (result.components) {
-      setComponents(result.components.map(({str, kind}, i) => {
-        if (kind == 'redup') {
-          return <span className="blue" key={i}> {str} </span>
-        } else if (kind == 'root') {
-          return <span className={result.valid ? "green" : "red"} key={i}> {str} </span>
-        } else {
-          return <span className="affix" key={i}> {str} </span>
-        }
-      }))
+      setComponents(
+        result.components.map(({ str, kind }, i) => {
+          if (kind == "redup") {
+            return (
+              <span className="blue" key={i}>
+                {" "}
+                {str}{" "}
+              </span>
+            );
+          } else if (kind == "root") {
+            return (
+              <span className={result.valid ? "green" : "red"} key={i}>
+                {" "}
+                {str}{" "}
+              </span>
+            );
+          } else {
+            return (
+              <span className="affix" key={i}>
+                {" "}
+                {str}{" "}
+              </span>
+            );
+          }
+        })
+      );
     } else {
-      setComponents([])
+      setComponents([]);
     }
     setLoading(false);
-  }
+  };
 
   const handleInputChange = (newInput) => {
     console.log("Input changed:", newInput);
@@ -50,11 +67,10 @@ function App() {
     }
     debounceTimerRef.current = setTimeout(() => {
       console.log("Analyzing:", newInput);
-      
-      analyeWord(newInput);
-    }, 900)
 
-  }
+      analyeWord(newInput);
+    }, 600);
+  };
   const inputRef = useRef("");
   useEffect(() => {
     inputRef.current = input;
@@ -65,7 +81,7 @@ function App() {
     console.log("Key pressed:", key);
 
     const currentInput = inputRef.current;
-    
+
     if (key == "Backspace") {
       handleInputChange(currentInput.slice(0, currentInput.length - 1));
       return;
@@ -77,18 +93,18 @@ function App() {
       return;
     }
 
-    handleInputChange(currentInput + key.toLowerCase())
-  }
+    handleInputChange(currentInput + key.toLowerCase());
+  };
 
   useEffect(() => {
-    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener("keydown", onKeyDown);
     return () => {
-      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener("keydown", onKeyDown);
 
       if (debounceTimerRef.current) {
         clearTimeout(debounceTimerRef.current);
       }
-    }
+    };
   }, []);
 
   return (
