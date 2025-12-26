@@ -96,7 +96,7 @@ C V C V R "hin" -> C V R . {"form": "contemplated"}         // sasabihin
 
 "ini" C V C V R -> C V R . {"form": "incompleted"}                // inilalabas
 
-// TO DO: example for: redup of first CV if the word starts with a vowel and other cases
+// TO DO: example for: redup of first CV if the word starts with a vowel
 
 
 
@@ -118,7 +118,16 @@ C V C V R "an" -> C V R . {"form": "contemplated"}              // huhugasan
 
 C V C V R "han" -> C V R . {"form": "contemplated"}              // huhugasan
 
-// TO DO: example for: redup of first CV if the word starts with a vowel and other cases
+"in" R "an" -> R . {"form": "completed"}                        // iniklian
+
+"in" V V R "an" -> V R . {"form": "incompleted"}                // iniiklian
+
+V V R "an" -> V R . {"form": "contemplated"}                // iiklian
+
+"ni" R "an" -> R . {"form": "completed"}                    // nilakasan
+
+"ni" C V C V R "an" -> C V R . {"form": "incompleted"}                    // nilalakasan
+
 
 
 
@@ -126,13 +135,20 @@ C V C V R "han" -> C V R . {"form": "contemplated"}              // huhugasan
 
 "pag" R "an" -> R . {"form": "infinitive"}                      // pagasayawan
 
- "pinag" R "an" -> R . {"form": "completed"}                    // pinagsayawan
+"pinag" R "an" -> R . {"form": "completed"}                    // pinagsayawan
 
- "pinag" C V C V R "an" -> C V R . {"form": "incompleted"}          // pinagsasayawan
+"pinag" C V C V R "an" -> C V R . {"form": "incompleted"}          // pinagsasayawan
 
- "pag" C V C V R "an" -> C V R . {"form": "contemplated"}           // pagsasayawan
+"pag" C V C V R "an" -> C V R . {"form": "contemplated"}           // pagsasayawan
 
- // TO DO: example for: redup of first CV if the word starts with a vowel and other cases
+"pinag" V V R "an" -> V R . {"form": "incompleted"}             // pinagaaralan
+
+"pag" V V R "an" -> V R . {"form": "contemplated"}              // pagaaralan
+
+"pinag-" V V R "an" -> V R . {"form": "incompleted"}             // pinag-aaralan
+
+"pag-" V V R "an" -> V R . {"form": "contemplated"}              // pag-aaralan
+
 
 
 
@@ -142,9 +158,12 @@ C V C V R "han" -> C V R . {"form": "contemplated"}              // huhugasan
 
 "ipinag" R -> R . {"form": "completed"}            // ipinagluto
 
-"ipinag" C V C V R . {"form": "incompleted"}            // ipinagluluto
+"ipinag" C V C V R -> C V R . {"form": "incompleted"}            // ipinagluluto
 
-"ipag" C V C V R . {"form": "contemplated"}             // ipagluluto
+"ipag" C V C V R -> C V R . {"form": "contemplated"}             // ipagluluto
+
+
+
 
 // Skipped: Word formation rules for i- verbs
 // rules already exists
@@ -185,6 +204,12 @@ C V C V R "han" -> C V R . {"form": "contemplated"}              // huhugasan
 "ipinang-" V V R -> V R . {"form": "incompleted"}       // ipinang-aalis
 
 "ipang-" V V R -> V R . {"form": "contemplated"}        // ipang-aalis
+
+"ipinang" V R -> V R . {"form": "completed"}           // ipinangalis
+
+"ipinang" V V R -> V R . {"form": "incompleted"}       // ipinangaalis
+
+"ipang" V V R -> V R . {"form": "contemplated"}        // ipangaalis
 
 
 
