@@ -1,5 +1,5 @@
-const { try_match, produce_rootword } = require('core')
-const { validateInput } = require('./utils/validate')
+const { try_match, produce_rootword } = require("core");
+const { validateInput } = require("./utils/validate");
 
 const express = require("express");
 const path = require("path");
@@ -8,7 +8,15 @@ const fs = require("fs");
 const app = express();
 app.use(express.json());
 
-const rootWordsPath = path.join(__dirname, "..", "..", "core", "src", "data", "root_words.json");
+const rootWordsPath = path.join(
+  __dirname,
+  "..",
+  "..",
+  "core",
+  "src",
+  "data",
+  "root_words.json"
+);
 
 app.get("/api/roots", (req, res) => {
   try {
@@ -34,8 +42,8 @@ app.post("/api/analyze", (req, res) => {
   if (!validation.ok) {
     return res.status(400).json({
       valid: false,
-      error: validation.error
-    })
+      error: validation.error,
+    });
   }
 
   const input = validation.value;
@@ -44,8 +52,8 @@ app.post("/api/analyze", (req, res) => {
 
   if (!result) {
     return res.json({
-      components: [{ str: word, kind: 'root' }],
-      valid: false
+      components: [{ str: word, kind: "root" }],
+      valid: false,
     });
   }
 
@@ -55,7 +63,7 @@ app.post("/api/analyze", (req, res) => {
     root,
     components,
     valid: true,
-    form: rule.aux_data.form
+    form: rule.aux_data.form,
   });
 });
 
