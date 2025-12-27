@@ -2,11 +2,46 @@ import { useState, useEffect, useRef } from "react";
 
 import "./App.css";
 
+const KIND_INFO = {
+  redup: {
+    label: "Reduplication",
+    desc: "Reduplication desc",
+  },
+  affix: {
+    label: "Affix",
+    desc: "Affix desc",
+  },
+  root: {
+    label: "Root",
+    desc: "Root desc",
+  },
+};
+
+function Token({ str, kind, valid }) {
+  const info = KIND_INFO[kind] || { label: kind, desc: "" };
+
+  let className = "affix";
+  if (kind === "redup") className = "blue";
+  if (kind === "root") className = valid ? "green" : "red";
+
+  return (
+    <span className="token-wrapper">
+      <span className={`token ${className}`}>{str}</span>
+
+      <span className="tooltip">
+        <strong>{info.label}</strong>
+        <div className="tooltip-desc">{info.desc}</div>
+      </span>
+    </span>
+  );
+}
+
 function App() {
   const [input, setInput] = useState("");
   const [components, setComponents] = useState([]);
   const [loading, setLoading] = useState(false);
   const debounceTimerRef = useRef(null);
+  const [isValid, setIsValid] = useState(false);
 
   const fetchApi = async (word) => {
     const API_URL = import.meta.env.VITE_API_URL || "";
@@ -25,34 +60,11 @@ function App() {
     const result = await response.json();
 
     if (result.components) {
-      setComponents(
-        result.components.map(({ str, kind }, i) => {
-          if (kind == "redup") {
-            return (
-              <span className="blue" key={i}>
-                {" "}
-                {str}{" "}
-              </span>
-            );
-          } else if (kind == "root") {
-            return (
-              <span className={result.valid ? "green" : "red"} key={i}>
-                {" "}
-                {str}{" "}
-              </span>
-            );
-          } else {
-            return (
-              <span className="affix" key={i}>
-                {" "}
-                {str}{" "}
-              </span>
-            );
-          }
-        })
-      );
+      setComponents(result.components);
+      setIsValid(result.valid);
     } else {
       setComponents([]);
+      setIsValid(false);
     }
     setLoading(false);
   };
@@ -117,7 +129,13 @@ function App() {
 
   return (
     <div className="input-div">
-      {loading ? <span className="yellow">{input}</span> : components}
+      {loading ? (
+        <span className="yellow">{input}</span>
+      ) : (
+        components.map((c, i) => (
+          <Token key={i} str={c.str} kind={c.kind} valid={isValid} />
+        ))
+      )}
     </div>
   );
 }
