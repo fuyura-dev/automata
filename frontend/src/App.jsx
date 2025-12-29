@@ -42,6 +42,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const debounceTimerRef = useRef(null);
   const [isValid, setIsValid] = useState(false);
+  const [form, setForm] = useState([]);
 
   const fetchApi = async (word) => {
     const API_URL = import.meta.env.VITE_API_URL || "";
@@ -61,9 +62,12 @@ function App() {
 
     if (result.components) {
       setComponents(result.components);
+      setForm(result.form);
+      console.log(result.form);
       setIsValid(result.valid);
     } else {
       setComponents([]);
+      setForm("");
       setIsValid(false);
     }
     setLoading(false);
@@ -127,15 +131,28 @@ function App() {
     };
   }, []);
 
+  const resultForm =
+    input && form !== undefined ? "Form: " + form : input ? "invalid" : "";
+  console.log("resultForm:", resultForm);
+
   return (
-    <div className="input-div">
-      {loading ? (
-        <span className="yellow">{input}</span>
-      ) : (
-        components.map((c, i) => (
-          <Token key={i} str={c.str} kind={c.kind} valid={isValid} />
-        ))
-      )}
+    <div>
+      <div className="input-div">
+        {loading ? (
+          <span className="yellow">{input}</span>
+        ) : (
+          components.map((c, i) => (
+            <Token key={i} str={c.str} kind={c.kind} valid={isValid} />
+          ))
+        )}
+      </div>
+      <div className="form-div">
+        {loading || resultForm == "" ? (
+          <span></span>
+        ) : (
+          <span>{resultForm}</span>
+        )}
+      </div>
     </div>
   );
 }
