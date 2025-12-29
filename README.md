@@ -7,18 +7,10 @@
    cd automata
    ```
 
-2. **Install root dependencies**
+2. **Install root and backend dependencies**
 
    ```sh
    npm install
-   ```
-
-3. **Install backend dependencies**
-
-   ```sh
-   cd backend
-   npm install
-   cd ..
    ```
 
 4. **Install frontend dependencies**
@@ -42,7 +34,7 @@ This will start both the backend server and frontend development server concurre
 
 ```sh
 cd backend
-npm start
+npm run dev
 ```
 
 ### Run Frontend Only

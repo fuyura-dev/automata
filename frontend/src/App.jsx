@@ -18,7 +18,10 @@ const KIND_INFO = {
 };
 
 function Token({ str, kind, valid }) {
-  const info = KIND_INFO[kind] || { label: kind, desc: "" };
+  const info =
+    kind == "root" && !valid
+      ? { label: "Invalid", desc: "" }
+      : KIND_INFO[kind] || { label: kind, desc: "" };
 
   let className = "affix";
   if (kind === "redup") className = "blue";
