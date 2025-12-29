@@ -16,7 +16,7 @@ body {
 
 .input-div {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   justify-content: center;
 }
 
@@ -63,14 +63,14 @@ span {
 
 .tooltip {
   position: absolute;
-  top: 120%;
+  top: -70%;
   left: 50%;
   transform: translateX(-50%);
   background: #000000;
   color: #ffffff;
   padding: 6px 8px;
   border-radius: 6px;
-  font-size: 12px;
+  font-size: 30px;
   opacity: 0;
   pointer-events: none;
   white-space: nowrap;
@@ -81,6 +81,10 @@ span {
 }
 
 .tooltip-desc {
-  font-size: 11px;
+  font-size: 20px;
   opacity: 0.85;
+}
+
+.form-div {
+  padding-top: 5vh;
 }
