@@ -17,6 +17,16 @@ const KIND_INFO = {
   },
 };
 
+const formatForm = (form) => {
+  if (!form) return "Invalid";
+
+  const values = Array.isArray(form) ? form : [form];
+
+  return values
+    .map((f) => f.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()))
+    .join(", ");
+};
+
 function Token({ str, kind, valid }) {
   const info =
     kind == "root" && !valid
@@ -134,9 +144,7 @@ function App() {
     };
   }, []);
 
-  const resultForm =
-    input && form !== undefined ? "Form: " + form : input ? "invalid" : "";
-  console.log("resultForm:", resultForm);
+  const resultForm = input ? `Form: ${formatForm(form)}` : "";
 
   return (
     <div>
