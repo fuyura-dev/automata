@@ -18,12 +18,12 @@ const KIND_INFO = {
 };
 
 const formatForm = (form) => {
-  if (!form) return "Invalid";
+  if (!form) return null;
 
   const values = Array.isArray(form) ? form : [form];
 
   return values
-    .map((f) => f.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()))
+    .map((f) => f.replace(/\b\w/g, (c) => c.toUpperCase()))
     .join(", ");
 };
 
@@ -49,6 +49,8 @@ function Token({ str, kind, valid }) {
   );
 }
 
+const API_URL = import.meta.env.VITE_API_URL || "";
+
 function App() {
   const [input, setInput] = useState("");
   const [components, setComponents] = useState([]);
@@ -56,9 +58,11 @@ function App() {
   const debounceTimerRef = useRef(null);
   const [isValid, setIsValid] = useState(false);
   const [form, setForm] = useState([]);
+  const [roots, setRoots] = useState([]);
+  const [showRoots, setShowRoots] = useState(false);
+  const [rootsLoading, setRootsLoading] = useState(false);
 
   const fetchApi = async (word) => {
-    const API_URL = import.meta.env.VITE_API_URL || "";
     return await fetch(`${API_URL}/api/analyze`, {
       method: "POST",
       body: JSON.stringify({ word: word }),
@@ -100,6 +104,7 @@ function App() {
       analyeWord(newInput);
     }, 600);
   };
+
   const inputRef = useRef("");
   useEffect(() => {
     inputRef.current = input;
@@ -133,6 +138,26 @@ function App() {
     handleInputChange(currentInput + key.toLowerCase());
   };
 
+  const formattedForm = formatForm(form);
+  const resultForm = input
+    ? formattedForm
+      ? `Form: ${formattedForm}`
+      : "Invalid"
+    : "";
+
+  const fetchRoots = async () => {
+    if (roots.length > 0) return;
+
+    setRootsLoading(true);
+    const response = await fetch(`${API_URL}/api/roots`);
+    const result = await response.json();
+    setRoots(result.words || []);
+    setRootsLoading(false);
+  };
+  useEffect(() => {
+    fetchRoots();
+  }, []);
+
   useEffect(() => {
     window.addEventListener("keydown", onKeyDown);
     return () => {
@@ -143,8 +168,6 @@ function App() {
       }
     };
   }, []);
-
-  const resultForm = input ? `Form: ${formatForm(form)}` : "";
 
   return (
     <div>
@@ -164,6 +187,30 @@ function App() {
           <span>{resultForm}</span>
         )}
       </div>
+      <button
+        className="show-roots-btn"
+        onClick={() => {
+          if (!showRoots) fetchRoots();
+          setShowRoots((prev) => !prev);
+        }}
+      >
+        {showRoots ? "Hide roots" : "Show roots"}
+      </button>
+      {showRoots && (
+        <div className="roots-panel">
+          {rootsLoading ? (
+            <div className="roots-loading">Loading roots…</div>
+          ) : (
+            <div className="roots-list">
+              {roots.map((root, i) => (
+                <span key={i} className="root-item">
+                  {root}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
