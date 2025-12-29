@@ -151,7 +151,10 @@ function App() {
     setRootsLoading(true);
     const response = await fetch(`${API_URL}/api/roots`);
     const result = await response.json();
-    setRoots(result.words || []);
+
+    const sortedRoots = (result.words || []).slice().sort();
+
+    setRoots(sortedRoots);
     setRootsLoading(false);
   };
   useEffect(() => {
