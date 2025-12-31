@@ -174,6 +174,23 @@ function App() {
 
   return (
     <div>
+      <div className="key-hints">
+        <div className="key-hint">
+          <span className="key">Enter ↵</span>
+          <span className="hint-label">Quick Analyze</span>
+        </div>
+
+        <div className="key-hint">
+          <span className="key">⌫</span>
+          <span className="hint-label">Delete letter</span>
+        </div>
+
+        <div className="key-hint">
+          <span className="key">DEL</span>
+          <span className="hint-label">Clear</span>
+        </div>
+      </div>
+
       <div className="input-div">
         {loading ? (
           <span className="yellow">{input}</span>
