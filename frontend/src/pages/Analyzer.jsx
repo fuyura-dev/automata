@@ -15,6 +15,8 @@ function Analyzer() {
   const [roots, setRoots] = useState([]);
   const [showRoots, setShowRoots] = useState(false);
   const [rootsLoading, setRootsLoading] = useState(false);
+  const otherFormsRef = useRef([]);
+  const [hasOther, setHasOther] = useState(false);
 
   const analyeWord = async (word) => {
     const result = await analyzeWordApi(word);
@@ -29,6 +31,8 @@ function Analyzer() {
       setForm("");
       setIsValid(false);
     }
+    otherFormsRef.current = result.other ?? [];
+    setHasOther(result.other.length > 0);
     setLoading(false);
   };
 
@@ -67,17 +71,36 @@ function Analyzer() {
 
   const onKeyDown = (e) => {
     const key = e.key;
-    const currentInput = inputRef.current;
     console.log("Key pressed:", key);
 
-    if (key.length != 1 || !/^[a-zA-Z]$/.test(key)) {
-      if (key == "Backspace") {
-        handleInputChange(currentInput.slice(0, currentInput.length - 1));
-      } else if (key == "Delete") {
-        handleInputChange("");
-      } else if (key == "Enter") {
-        analyeWord(currentInput);
+    const currentInput = inputRef.current;
+
+    if (key == "Backspace") {
+      handleInputChange(currentInput.slice(0, currentInput.length - 1));
+      return;
+    }
+    if (key == "Delete") {
+      handleInputChange("");
+      return;
+    }
+    if (key == "Enter") {
+      analyeWord(currentInput);
+      return;
+    }
+    if (otherFormsRef.current.length > 0) {
+      if (key == "ArrowLeft") {
+        handleInputChange(otherFormsRef.current[0]);
+        return;
       }
+      if (key == "ArrowRight") {
+        handleInputChange(otherFormsRef.current[1]);
+        return;
+      }
+    }
+    if (key.length != 1) {
+      return;
+    }
+    if (!/^[a-zA-Z]$/.test(key)) {
       return;
     }
 
@@ -114,6 +137,18 @@ function Analyzer() {
           <span className="key">DEL</span>
           <span className="hint-label">Clear</span>
         </div>
+        {hasOther && (
+          <>
+            <div className="key-hint">
+              <span className="key">←</span>
+              <span className="hint-label">Previous Form</span>
+            </div>
+            <div className="key-hint">
+              <span className="key">→</span>
+              <span className="hint-label">Next Form</span>
+            </div>
+          </>
+        )}
       </div>
 
       <div className="input-div">
