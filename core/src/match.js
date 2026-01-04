@@ -1,6 +1,7 @@
 const { readFileSync, lstatSync } = require("node:fs");
 const { join } = require("node:path");
 const parse = require("./parser.js");
+const { Affix } = require("./rules.js");
 
 let cached_rules = null;
 let last_modify_rules = 0;
@@ -149,11 +150,58 @@ function try_match(input) {
     .map(({ str, kind }) => {
       return { str, kind };
     });
+
+  const root = produce_rootword(matched_rule, matched_instances);
   return {
     rule: matched_rule,
-    root: produce_rootword(matched_rule, matched_instances),
+    root,
+    other: other_forms(root, matched_rule.aux_data.group),
     components: components,
   };
+}
+
+function other_forms(root, group) {
+  if (!group) {
+    return [];
+  }
+
+  const rules = parse_rules().filter((r) => r.aux_data.group == group);
+  const others = [];
+
+  for (const rule of rules) {
+    let instances = new Map();
+    let matched = 0;
+    let fail = false;
+    let remain = rule.root_production.reduce((sum, comp) => {
+      return sum + comp.min_length();
+    }, 0);
+
+    for (const comp of rule.root_production) {
+      remain -= comp.min_length();
+      const cur_matched = comp.try_match(root, matched, instances, remain);
+      if (!cur_matched) {
+        fail = true;
+        break;
+      }
+      matched += cur_matched;
+    }
+    if (!fail) {
+      console.log(instances);
+      let word = "";
+      for (const comp of rule.derivation) {
+        if (comp instanceof Affix) {
+          word += comp.content;
+        } else {
+          word += instances.get(comp.name)[0];
+        }
+      }
+      others.push({
+        word,
+        form: rule.aux_data.form,
+      });
+    }
+  }
+  return others;
 }
 
 module.exports = {
