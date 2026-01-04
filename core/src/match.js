@@ -192,7 +192,12 @@ function other_forms(root, group) {
         if (comp instanceof Affix) {
           word += comp.content;
         } else {
-          word += instances.get(comp.name)[0];
+          const inst = instances.get(comp.name);
+          if (!inst) {
+            fail = true;
+            break;
+          }
+          word += inst[0];
         }
       }
       others.push({
