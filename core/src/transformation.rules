@@ -2,53 +2,53 @@ R -> R . {"form": "root"}
 
 // ******************** -Um- verbs
 
-C "um" V R -> C V R . {"form": ["infinitive", "completed"] } // tumakbo
+C "um" V R -> C V R . {"form": ["infinitive", "completed"], "group": 1 } // tumakbo
 
-C "um" V C V R -> C V R . {"form": "incompleted" }           // tumatakbo
+C "um" V C V R -> C V R . {"form": "incompleted", "group": 1 }           // tumatakbo
 
-C V C V R -> C V R . {"form" : "contemplated"}               // tatakbo
+C V C V R -> C V R . {"form" : "contemplated", "group": 1}               // tatakbo
 
-"um" V R -> V R . {"form": ["infinitive", "completed"] }     // uminom 
+"um" V R -> V R . {"form": ["infinitive", "completed"], "group": 1 }     // uminom 
 
-"um" V V R -> V R . {"form": "incompleted"}                  // umiinom
+"um" V V R -> V R . {"form": "incompleted", "group": 1}                  // umiinom
 
-V V R -> V R . {"form": "contemplated"}                      // iinom
+V V R -> V R . {"form": "contemplated", "group": 1}                      // iinom
 
 
 
 // ******************** Ma- verbs
 
-"ma" R -> R . {"form": "infinitive"}                         // manood
+"ma" R -> R . {"form": "infinitive", "group": 2}                         // manood
 
-"na" R -> R . {"form": "completed"}                          // nanood
+"na" R -> R . {"form": "completed", "group": 2}                          // nanood
 
-"na" C V C V R -> C V R . {"form": "incompleted"}            // nanonood
+"na" C V C V R -> C V R . {"form": "incompleted", "group": 2}            // nanonood
 
-"ma" C V C V R -> C V R . {"form": "contemplated"}           // manonood
+"ma" C V C V R -> C V R . {"form": "contemplated", "group": 2}           // manonood
 
-"na" V V R -> V R . {"form": "incompleted"}                  // naiinis
+"na" V V R -> V R . {"form": "incompleted", "group": 2}                  // naiinis
 
-"ma" V V R -> V R . {"form": "contemplated"}                 // maiinis
+"ma" V V R -> V R . {"form": "contemplated", "group": 2}                 // maiinis
 
 
 
 // ******************** Mag- verbs
 
-"mag" R -> R . {"form": "infinitive"}                        // magluto
+"mag" R -> R . {"form": "infinitive", "group": 3}                        // magluto
 
-"nag" R -> R . {"form": "completed"}                         // nagluto
+"nag" R -> R . {"form": "completed", "group": 3}                         // nagluto
 
-"mag" C V C V R -> C V R . {"form": "contemplated"}          // magluluto
+"mag" C V C V R -> C V R . {"form": "contemplated", "group": 3}          // magluluto
 
-"nag" C V C V R -> C V R . {"form": "incompleted"}           // nagluluto
+"nag" C V C V R -> C V R . {"form": "incompleted", "group": 3}           // nagluluto
 
-"mag" V V R -> V R . {"form": "contemplated"}              // magaaral
+"mag" V V R -> V R . {"form": "contemplated", "group": 3}              // magaaral
 
-"nag" V V R -> V R . {"form": "incompleted"}               // nagaaral
+"nag" V V R -> V R . {"form": "incompleted", "group": 3}               // nagaaral
 
-"mag-" V V R -> V R . {"form": "contemplated"}              // magaaral
+"mag-" V V R -> V R . {"form": "contemplated", "group": 3}              // magaaral
 
-"nag-" V V R -> V R . {"form": "incompleted"}               // nagaaral
+"nag-" V V R -> V R . {"form": "incompleted", "group": 3}               // nagaaral
 
 
 
@@ -133,34 +133,34 @@ V V R "an" -> V R . {"form": "contemplated"}                // iiklian
 
 // ******************** Location-focus pag – an verbs
 
-"pag" R "an" -> R . {"form": "infinitive"}                      // pagasayawan
+"pag" R "an" -> R . {"form": "infinitive", "group": 4}                      // pagasayawan
 
-"pinag" R "an" -> R . {"form": "completed"}                    // pinagsayawan
+"pinag" R "an" -> R . {"form": "completed", "group": 4}                    // pinagsayawan
 
-"pinag" C V C V R "an" -> C V R . {"form": "incompleted"}          // pinagsasayawan
+"pinag" C V C V R "an" -> C V R . {"form": "incompleted", "group": 4}          // pinagsasayawan
 
-"pag" C V C V R "an" -> C V R . {"form": "contemplated"}           // pagsasayawan
+"pag" C V C V R "an" -> C V R . {"form": "contemplated", "group": 4}           // pagsasayawan
 
-"pinag" V V R "an" -> V R . {"form": "incompleted"}             // pinagaaralan
+"pinag" V V R "an" -> V R . {"form": "incompleted", "group": 4}             // pinagaaralan
 
-"pag" V V R "an" -> V R . {"form": "contemplated"}              // pagaaralan
+"pag" V V R "an" -> V R . {"form": "contemplated", "group": 4}              // pagaaralan
 
-"pinag-" V V R "an" -> V R . {"form": "incompleted"}             // pinag-aaralan
+"pinag-" V V R "an" -> V R . {"form": "incompleted", "group": 4}             // pinag-aaralan
 
-"pag-" V V R "an" -> V R . {"form": "contemplated"}              // pag-aaralan
+"pag-" V V R "an" -> V R . {"form": "contemplated", "group": 4}              // pag-aaralan
 
 
 
 
 // ******************** BF ipag- and i- verbs
 
-"ipag" R -> R . {"form": "infinitive"}                  // ipagluto
+"ipag" R -> R . {"form": "infinitive", "group" : 5}                  // ipagluto
 
-"ipinag" R -> R . {"form": "completed"}            // ipinagluto
+"ipinag" R -> R . {"form": "completed", "group" : 5}            // ipinagluto
 
-"ipinag" C V C V R -> C V R . {"form": "incompleted"}            // ipinagluluto
+"ipinag" C V C V R -> C V R . {"form": "incompleted", "group" : 5}            // ipinagluluto
 
-"ipag" C V C V R -> C V R . {"form": "contemplated"}             // ipagluluto
+"ipag" C V C V R -> C V R . {"form": "contemplated", "group" : 5}             // ipagluluto
 
 
 
@@ -230,15 +230,15 @@ V V R "an" -> V R . {"form": "contemplated"}                // iiklian
 
 // ******************** RF ika- verbs
 
-"ika" R -> R . {"form": "infinitive"}           // ikatuwa
+"ika" R -> R . {"form": "infinitive", "group": 6}           // ikatuwa
 
-"ikina" R -> R . {"form": "completed"}                   // ikinatuwa
+"ikina" R -> R . {"form": "completed", "group": 6}                   // ikinatuwa
 
-"ikina" C V C V R -> C V R . {"form": "incompleted"}         // ikinatutuwa
+"ikina" C V C V R -> C V R . {"form": "incompleted", "group": 6}         // ikinatutuwa
 
-"ika" C V C V R -> C V R . {"form": "contemplated"}         // ikatutuwa
+"ika" C V C V R -> C V R . {"form": "contemplated", "group": 6}         // ikatutuwa
 
-"ikina" V V R -> V R . {"form": "incompleted"}         // ikinaiinis
+"ikina" V V R -> V R . {"form": "incompleted", "group": 6}         // ikinaiinis
 
-"ika" V V R -> V R . {"form": "contemplated"}         // ikatutuwa
+"ika" V V R -> V R . {"form": "contemplated", "group": 6}         // ikatutuwa
 

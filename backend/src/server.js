@@ -64,16 +64,28 @@ app.post("/api/analyze", (req, res) => {
     return res.json({
       components: [{ str: word, kind: "root" }],
       valid: false,
+      other: [],
     });
   }
 
-  const { rule, components, root } = result;
+  const { rule, components, root, other } = result;
+
+  const ind = other.findIndex(({ word }) => {
+    return word == input;
+  });
 
   res.json({
     root,
     components,
     valid: true,
     form: rule.aux_data.form,
+    other:
+      ind == -1
+        ? []
+        : [
+            other[(ind - 1 + other.length) % other.length].word,
+            other[(ind + 1) % other.length].word,
+          ],
   });
 });
 
