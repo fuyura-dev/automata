@@ -43,11 +43,12 @@ async function run() {
       continue;
     }
 
-    const { rule, root, components } = result;
+    const { rule, root, components, other } = result;
 
     console.log(stringify(rule));
     console.log("root word: ", root);
     console.log("aux data: ", rule.aux_data);
+    console.log(other);
     console.log(components);
     console.log();
   }

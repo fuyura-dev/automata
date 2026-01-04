@@ -61,6 +61,8 @@ function App() {
   const [roots, setRoots] = useState([]);
   const [showRoots, setShowRoots] = useState(false);
   const [rootsLoading, setRootsLoading] = useState(false);
+  const otherFormsRef = useRef([]);
+  const [hasOther, setHasOther] = useState(false);
 
   const fetchApi = async (word) => {
     return await fetch(`${API_URL}/api/analyze`, {
@@ -87,6 +89,8 @@ function App() {
       setForm("");
       setIsValid(false);
     }
+    otherFormsRef.current = result.other ?? [];
+    setHasOther(result.other.length > 0);
     setLoading(false);
   };
 
@@ -127,6 +131,16 @@ function App() {
     if (key == "Enter") {
       analyeWord(currentInput);
       return;
+    }
+    if (otherFormsRef.current.length > 0) {
+      if (key == "ArrowLeft") {
+        handleInputChange(otherFormsRef.current[0]);
+        return;
+      }
+      if (key == "ArrowRight") {
+        handleInputChange(otherFormsRef.current[1]);
+        return;
+      }
     }
     if (key.length != 1) {
       return;
@@ -189,6 +203,19 @@ function App() {
           <span className="key">DEL</span>
           <span className="hint-label">Clear</span>
         </div>
+
+        {hasOther && (
+          <>
+            <div className="key-hint">
+              <span className="key">←</span>
+              <span className="hint-label">Previous Form</span>
+            </div>
+            <div className="key-hint">
+              <span className="key">→</span>
+              <span className="hint-label">Next Form</span>
+            </div>
+          </>
+        )}
       </div>
 
       <div className="input-div">
