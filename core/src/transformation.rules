@@ -18,9 +18,9 @@ V V R -> V R . {"form": "contemplated", "group": 1}                      // iino
 
 // ******************** Ma- verbs
 
-"ma" R -> R . {"form": "infinitive", "group": 2}                         // manood
+"ma" C R -> C R . {"form": "infinitive", "group": 2}                         // manood
 
-"na" R -> R . {"form": "completed", "group": 2}                          // nanood
+"na" C R -> C R . {"form": "completed", "group": 2}                          // nanood
 
 "na" C V C V R -> C V R . {"form": "incompleted", "group": 2}            // nanonood
 
@@ -56,13 +56,11 @@ R V "in" -> R V . {"form": "infinitive"}                     // lutuin
 
 R V "hin" -> R V . {"form": "infinitive"}                     // basahin
 
-R V C "hin" -> R V C V . {"form": "infinitive"}                   // bilhin
-
 C "in" R -> C R . {"form": "completed"}                       // kinain
 
-"in" R -> R . {"form": "completed"}                       // inalis
+"in" V R -> V R . {"form": "completed"}                       // inalis
 
-"ni" R -> R . {"form": "completed"}                         // niluto
+"ni" C R -> C R . {"form": "completed"}                         // niluto
 
 C "in" V C V R -> C V R . {"form": "incompleted"}            // kinakain
 
@@ -135,7 +133,7 @@ V V R "an" -> V R . {"form": "contemplated"}                // iiklian
 
 // ******************** Location-focus pag – an verbs
 
-"pag" R "an" -> R . {"form": "infinitive", "group": 4}                      // pagasayawan
+"pag" R "an" -> R . {"form": "infinitive", "group": 4}                      // pagsayawan
 
 "pinag" R "an" -> R . {"form": "completed", "group": 4}                    // pinagsayawan
 
