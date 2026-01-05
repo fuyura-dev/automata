@@ -88,11 +88,17 @@ C V C V R "hin" -> C V R . {"form": "contemplated"}         // sasabihin
 
 "i" C V C V R -> C V R . {"form": "contemplated"}           // ibibigay
 
-"ini" R -> R . {"form": "completed"}                        // iniluto inilabas
+"ini" C R -> C R . {"form": "completed"}                        // iniluto inilabas
 
 "ini" C V C V R -> C V R . {"form": "incompleted"}                // inilalabas
 
-// TO DO: example for: redup of first CV if the word starts with a vowel
+"i" V R -> V R . {"form": "infinitive"}                     // ialay
+
+"ini" V R -> V R . {"form" : "completed"}                   // inialay
+
+"ini" V V R -> V R . {"form" : "incompleted"}               // iniaalay
+
+"i" V V R -> V R . {"form" : "contemplated"}                // iaalay
 
 
 
