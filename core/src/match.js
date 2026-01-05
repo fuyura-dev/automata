@@ -200,10 +200,12 @@ function other_forms(root, group) {
           word += inst[0];
         }
       }
-      others.push({
-        word,
-        form: rule.aux_data.form,
-      });
+      if (!fail) {
+        others.push({
+          word,
+          form: rule.aux_data.form,
+        });
+      }
     }
   }
   return others;

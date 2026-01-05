@@ -46,10 +46,6 @@ V V R -> V R . {"form": "contemplated", "group": 1}                      // iino
 
 "nag" V V R -> V R . {"form": "incompleted", "group": 3}               // nagaaral
 
-"mag-" V V R -> V R . {"form": "contemplated", "group": 3}              // magaaral
-
-"nag-" V V R -> V R . {"form": "incompleted", "group": 3}               // nagaaral
-
 
 
 // ******************** -In verbs
@@ -145,11 +141,6 @@ V V R "an" -> V R . {"form": "contemplated"}                // iiklian
 
 "pag" V V R "an" -> V R . {"form": "contemplated", "group": 4}              // pagaaralan
 
-"pinag-" V V R "an" -> V R . {"form": "incompleted", "group": 4}             // pinag-aaralan
-
-"pag-" V V R "an" -> V R . {"form": "contemplated", "group": 4}              // pag-aaralan
-
-
 
 
 // ******************** BF ipag- and i- verbs
@@ -196,14 +187,6 @@ V V R "an" -> V R . {"form": "contemplated"}                // iiklian
 "ipan" C V C V R -> C V R . {"form": "contemplated"}       // ipanlalaba
 
 "ipang" C V C V R -> C V R . {"form": "contemplated"}       // ipangguguhit
-
-"ipang-" V R -> V R . {"form": "infinitive"}            // ipang-alis
-
-"ipinang-" V R -> V R . {"form": "completed"}           // ipinang-alis
-
-"ipinang-" V V R -> V R . {"form": "incompleted"}       // ipinang-aalis
-
-"ipang-" V V R -> V R . {"form": "contemplated"}        // ipang-aalis
 
 "ipinang" V R -> V R . {"form": "completed"}           // ipinangalis
 
