@@ -232,4 +232,65 @@ span {
   margin-top: 12px;
   font-size: 1.2rem;
   font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.how {
+  min-height: 100vh;
+  padding: 3rem;
+  text-align: center;
+  margin: 0;
+}
+
+.how-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-top: 0;
+  letter-spacing: -0.11rem;
+}
+
+.how-cards {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.card {
+  background: white;
+  color: black;
+  width: 27vw;
+  height: 70vh;
+  padding: 2.5rem 3.5rem;
+  border-radius: 30px;
+}
+
+.card-icon {
+  height: 100px;
+  width: 100px;
+}
+
+.card-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 5rem;
+}
+
+.card-title.yellow {
+  color: #ff8c2b;
+}
+
+.card-title.blue {
+  color: #6285e7ff;
+}
+
+.card-title.green {
+  color: #7bcf4f;
+}
+
+.card-desc {
+  font-size: 1.8rem;
+  font-weight: 500;
+  overflow-wrap: break-word;
+  text-align: justify;
 }
