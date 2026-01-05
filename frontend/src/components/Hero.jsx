@@ -4,6 +4,10 @@ import { useNavigate } from "react-router";
 function Hero() {
   const navigate = useNavigate();
 
+  const scrollToHowItWorks = () => {
+    document.getElementById("how")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="hero">
       <div className="hero-left">
@@ -18,7 +22,9 @@ function Hero() {
           Start
         </button>
 
-        <p className="hero-hint">See how it works</p>
+        <p className="hero-hint" onClick={scrollToHowItWorks}>
+          See how it works
+        </p>
       </div>
 
       <div className="hero-right">
