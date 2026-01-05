@@ -191,26 +191,26 @@ span {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 6rem;
+  padding: clamp(2rem, 5vw, 6rem);
+  gap: 3rem;
 }
 
 .hero-tagline span {
-  font-size: 3.5rem;
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
 }
 
 .hero-tagline {
-  font-size: 3.5rem;
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
   font-weight: 600;
   opacity: 0.85;
   margin: 0;
 }
 
 .hero-title {
-  font-size: 12rem;
+  font-size: clamp(4rem, 10vw, 12rem);
   font-weight: 800;
   letter-spacing: -0.3rem;
-  margin: 0;
-  margin-bottom: 150px;
+  margin: 0 0 4rem;
 }
 
 .hero-btn {
@@ -253,27 +253,33 @@ span {
 .how-cards {
   display: flex;
   justify-content: center;
-  gap: 5rem;
+  gap: 3rem;
+  flex-wrap: wrap;
 }
 
 .card {
   background: white;
   color: black;
-  width: 27vw;
-  height: 70vh;
-  padding: 2.5rem 3.5rem;
+  width: min(390px, 90vw);
+  min-height: 420px;
+  padding: 2rem;
   border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-item: center;
 }
 
 .card-icon {
-  height: 100px;
-  width: 100px;
+  height: 64px;
+  width: 64px;
+  margin: 0 auto;
 }
 
 .card-title {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
   font-weight: 800;
-  margin-bottom: 5rem;
+  margin-bottom: 1.5rem;
 }
 
 .card-title.yellow {
@@ -289,8 +295,9 @@ span {
 }
 
 .card-desc {
-  font-size: 1.8rem;
+  font-size: clamp(1rem, 1.4vw, 1.6rem);
   font-weight: 500;
+  line-height: 1.65;
   overflow-wrap: break-word;
   text-align: justify;
 }
