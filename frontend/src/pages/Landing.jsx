@@ -1,11 +1,14 @@
 import { useNavigate } from "react-router";
+import Hero from "../components/Hero";
 
-export default function Landing() {
+function Landing() {
   const navigate = useNavigate();
 
   return (
-    <button onClick={() => navigate("/analyze")}>
-      Start
-    </button>
+    <div className="landing">
+      <Hero />
+    </div>
   );
 }
+
+export default Landing;
