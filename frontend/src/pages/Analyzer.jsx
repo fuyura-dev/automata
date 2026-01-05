@@ -121,7 +121,7 @@ function Analyzer() {
   }, []);
 
   return (
-    <div>
+    <div className="analyzer">
       <div className="key-hints">
         <div className="key-hint">
           <span className="key">Enter ↵</span>

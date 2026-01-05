@@ -1,9 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  padding-top: 33vh;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -12,6 +13,13 @@ body {
   font-optical-sizing: auto;
   font-weight: 800;
   font-style: normal;
+}
+
+.analyzer {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 33vh;
 }
 
 .input-div {
@@ -170,4 +178,57 @@ span {
 .hint-label {
   font-size: 0.85rem;
   color: #aaa;
+}
+
+.landing {
+  background: #292929;
+  color: white;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6rem;
+}
+
+.hero-tagline span {
+  font-size: 3.5rem;
+}
+
+.hero-tagline {
+  font-size: 3.5rem;
+  font-weight: 600;
+  opacity: 0.85;
+  margin: 0;
+}
+
+.hero-title {
+  font-size: 12rem;
+  font-weight: 800;
+  letter-spacing: -0.3rem;
+  margin: 0;
+  margin-bottom: 150px;
+}
+
+.hero-btn {
+  background: white;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  padding: 15px 80px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}
+
+.hero-btn:hover {
+  transform: translateY(-2px);
+}
+
+.hero-hint {
+  margin-top: 12px;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
