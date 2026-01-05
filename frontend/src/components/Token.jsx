@@ -29,7 +29,7 @@ function Token({ str, kind, valid }) {
 
       <span className="tooltip">
         <strong>{info.label}</strong>
-        <div className="tooltip-desc">{info.desc}</div>
+        <div className="tooltip-desc"></div>
       </span>
     </span>
   );
