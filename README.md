@@ -1,3 +1,17 @@
+## Platform Support
+
+⚠️ **Desktop-Only Web Application**
+
+This web application is designed for **desktop browsers with a physical keyboard**.
+
+It relies on low-level keyboard input (`keydown` events), including:
+- Letter keys (`a–z`)
+- `Enter`
+- `Backspace` / `Delete`
+- Arrow keys (`←` `→`)
+
+Because of this, **mobile devices and touch-only environments are not supported**
+
 ## Installation
 
 1. **Clone the repository**
